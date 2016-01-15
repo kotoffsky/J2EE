@@ -14,7 +14,7 @@ import persons.Person;
 import persons.SQLPersonsDB;
 import service.AssServicePerson;
 import service.Service;
-import service.type;
+import service.ServiceTypeEnum;
 
 public class ServiceServlet extends HttpServlet {
 	

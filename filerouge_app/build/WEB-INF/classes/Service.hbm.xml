@@ -13,7 +13,6 @@
     <property name="titre" />
     <property name="description" />
     <property name="categorie" />
-    <property name="typeService" />
     <property name="dateLimite" />
   </class>
 

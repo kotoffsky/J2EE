@@ -30,6 +30,14 @@
     <servlet-name>ServiceAjoutServlet</servlet-name>
     <servlet-class>bonjour.ServiceAjoutServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ServiceRetirerServlet</servlet-name>
+    <servlet-class>bonjour.ServiceRetirerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Accueil</servlet-name>
+    <jsp-file>/index.jsp</jsp-file>
+  </servlet>
   
   <servlet-mapping>
     <servlet-name>AuthentificationServlet</servlet-name>
@@ -45,8 +53,17 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>ServiceAjoutServlet</servlet-name>
-    <url-pattern>/servicesAjout</url-pattern>
+    <url-pattern>/ajouterService</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServiceRetirerServlet</servlet-name>
+    <url-pattern>/retirerAssociation/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Accueil</servlet-name>
+    <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+ 
 
   <env-entry>
     <env-entry-name>host</env-entry-name>

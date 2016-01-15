@@ -20,8 +20,8 @@ public class TestServiceDB {
      * @throws Exception if an unexpected error occurs
      */
     public static void test (IServiceDB instance) throws Exception {
-        instance.create(new Service("Service1","Desc1","Infomatique",type.DEMANDE,new Date()));
-        instance.create(new Service("Service1","Desc1","Infomatique",type.DEMANDE,new Date()));
+        instance.create(new Service("Service1","Desc1","Infomatique",new Date()));
+        instance.create(new Service("Service1","Desc1","Infomatique",new Date()));
         
         // Testing "R" methods
         Collection<Service> all=instance.retrieveAll();

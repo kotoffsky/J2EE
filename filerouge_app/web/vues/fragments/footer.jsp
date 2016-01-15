@@ -6,7 +6,7 @@
        		<c:choose>
 			    <c:when test="${empty connected}">
 				    <h3>Identifiez-vous</h3>
-				    <form role="form" method="POST" action="login">
+				    <form role="form" method="POST" action="${pageContext.request.contextPath}/login">
 				      <div class="form-group">
 				        <label>Email:</label>
 				        <input name="email" type="email" class="form-control">
@@ -25,7 +25,7 @@
 			       	<ul class="list-group">
 			       	<c:forEach var="service" items="${userServices}">
 			            <li class="list-group-item">
-				            <a class="btn btn-xs btn-warning pull-right" href="/retirerAssociation/${service.id}">
+				            <a class="btn btn-xs btn-warning pull-right" href="${pageContext.request.contextPath}/retirerAssociation/${service.id}">
 				              <span class="glyphicon glyphicon-trash"></span>
 				            </a>
 			                <span>${service.titre}</span>
@@ -43,7 +43,7 @@
 			            </li>
 					</c:forEach>
 					</ul>
-			        <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter un service</button>
+			        <a type="button" class="btn btn-success" href="${pageContext.request.contextPath}/ajouterService"><span class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter un service</a>
 			    </c:otherwise>
 			</c:choose>
            

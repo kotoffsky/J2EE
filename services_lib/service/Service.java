@@ -7,21 +7,18 @@ public class Service {
 	private String titre;
 	private String description;
 	private String categorie;
-	private type typeService; 
 	private Date dateLimite;
 	
 	
 	
 	public Service() {
-		this("Service Standard","Description","Infomatique",type.OFFRE,new Date());
+		this("Service Standard","Description","Infomatique",new Date());
 	}
-	public Service(String titre, String description, String categorie,
-			type typeService, Date dateLimite) {
+	public Service(String titre, String description, String categorie, Date dateLimite) {
 		super();
 		this.titre = titre;
 		this.description = description;
 		this.categorie = categorie;
-		this.typeService = typeService;
 		this.dateLimite = dateLimite;
 	}
 	public Long getId() {
@@ -54,11 +51,6 @@ public class Service {
 	public void setDateLimite(Date dateLimite) {
 		this.dateLimite = dateLimite;
 	}
-	public type getTypeService() {
-		return typeService;
-	}
-	public void setTypeService(type typeService) {
-		this.typeService = typeService;
-	}
+
 	
 }

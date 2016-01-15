@@ -15,7 +15,7 @@ import org.hibernate.Transaction;
 
 import service.AssServicePerson;
 import service.Service;
-import service.type;
+import service.ServiceTypeEnum;
 
 public class HibernateDBService extends HibernateDB{
 	public List<Service> getAllServices () {
