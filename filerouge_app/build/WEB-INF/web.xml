@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<web-app
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="http://java.sun.com/xml/ns/javaee"
+    xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+    xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+			http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" 
+    id="WebApp_ID"
+    version="3.0">
+
+<error-page>
+  <error-code>404</error-code>
+  <location>/vues/errorPage.jsp</location>
+</error-page>
+
+  <servlet>
+    <servlet-name>AuthentificationServlet</servlet-name>
+    <servlet-class>bonjour.AuthentificationServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>BonjourSignup</servlet-name>
+    <servlet-class>bonjour.BonjourSignup</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServiceServlet</servlet-name>
+    <servlet-class>bonjour.ServiceServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServiceAjoutServlet</servlet-name>
+    <servlet-class>bonjour.ServiceAjoutServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>AuthentificationServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>BonjourSignup</servlet-name>
+    <url-pattern>/createUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServiceServlet</servlet-name>
+    <url-pattern>/services</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServiceAjoutServlet</servlet-name>
+    <url-pattern>/servicesAjout</url-pattern>
+  </servlet-mapping>
+
+  <env-entry>
+    <env-entry-name>host</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>mysql.info.unicaen.fr</env-entry-value>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>database</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>21408279_6</env-entry-value>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>username</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>21408279</env-entry-value>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>password</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>5C11E67</env-entry-value>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>table</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>products</env-entry-value>
+  </env-entry>
+
+</web-app> 

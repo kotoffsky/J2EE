@@ -1,0 +1,1 @@
+ant test -Dhost="mysql.info.unicaen.fr" -Ddatabase="21408279_6" -Dusername="21408279" -Dpassword="5C11E67"
