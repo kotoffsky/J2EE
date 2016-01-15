@@ -13,6 +13,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import service.AssServicePerson;
 import service.Service;
 import service.type;
 
@@ -55,6 +56,46 @@ public class HibernateDBService extends HibernateDB{
 			}
 		    throw e;
 		} 
+    }
+    
+    public void attacherPersonAService(AssServicePerson association) {
+    	Transaction transaction=null;
+		Session session = null;
+	    try {
+	    	session=sessionFactory.openSession();
+		    transaction=session.beginTransaction();
+		    session.save(association);
+		    transaction.commit();
+		} catch (Throwable e) {
+		    if (transaction!=null) {
+		        transaction.rollback();
+		    }
+		    if (session != null) {
+				session.close();
+			}
+		    throw e;
+		} 
+    }
+    
+    public Service getService(long serviceID) {
+    	Transaction transaction=null;
+		Session session = null;
+		Service serviceDemande = null;
+	    try {
+	    	session=sessionFactory.openSession();
+		    transaction=session.beginTransaction();
+		    serviceDemande = (Service) session.get(Service.class, serviceID);
+		    transaction.commit();
+		} catch (Throwable e) {
+		    if (transaction!=null) {
+		        transaction.rollback();
+		    }
+		    if (session != null) {
+				session.close();
+			}
+		    throw e;
+		}
+	    return serviceDemande;
     }
 	
 }

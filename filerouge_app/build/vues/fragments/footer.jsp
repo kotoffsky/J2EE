@@ -22,7 +22,17 @@
 			    <c:otherwise>
 			       <h2>Bienvenue ${name} ${firstName}</h2>
 			       <h3>Je fournis</h3>
-			       <div class="well nopadding">
+			       	<ul class="list-group">
+			       	<c:forEach var="service" items="${userServices}">
+			            <li class="list-group-item">
+				            <a class="btn btn-xs btn-warning pull-right" href="/retirerAssociation/${service.id}">
+				              <span class="glyphicon glyphicon-trash"></span>
+				            </a>
+			                <span>${service.titre}</span>
+			            </li>
+					</c:forEach>
+					</ul>
+					<h3>Je demande</h3>
 			       	<ul class="list-group">
 			       	<c:forEach var="service" items="${userServices}">
 			            <li class="list-group-item">
@@ -33,8 +43,7 @@
 			            </li>
 					</c:forEach>
 					</ul>
-			        <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter service</button>
-			       </div>
+			        <button type="button" class="btn btn-success"><span class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter un service</button>
 			    </c:otherwise>
 			</c:choose>
            

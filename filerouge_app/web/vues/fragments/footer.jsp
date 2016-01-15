@@ -25,9 +25,9 @@
 			       	<ul class="list-group">
 			       	<c:forEach var="service" items="${userServices}">
 			            <li class="list-group-item">
-				            <button class="btn btn-xs btn-warning pull-right">
+				            <a class="btn btn-xs btn-warning pull-right" href="/retirerAssociation/${service.id}">
 				              <span class="glyphicon glyphicon-trash"></span>
-				            </button>
+				            </a>
 			                <span>${service.titre}</span>
 			            </li>
 					</c:forEach>

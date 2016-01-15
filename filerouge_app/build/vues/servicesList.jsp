@@ -13,8 +13,8 @@
 	                <h3>${service.titre}</h3>
 	                <p>${service.description}</p>
 	                <p>
-	                    <a href="#" class="btn btn-default">Offre</a>
-	                    <a href="#" class="btn btn-default">Demande</a>
+	                    <a href="#" class="btn btn-default">Je fournis</a>
+	                    <a href="#" class="btn btn-default">Je demande</a>
 	                </p>
 	            </div>
 	        </div>
