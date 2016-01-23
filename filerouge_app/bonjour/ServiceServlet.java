@@ -12,7 +12,6 @@ import javax.servlet.http.HttpSession;
 
 import persons.Person;
 import persons.SQLPersonsDB;
-import service.AssServicePerson;
 import service.Service;
 import service.ServiceTypeEnum;
 
@@ -31,22 +30,6 @@ public class ServiceServlet extends HttpServlet {
 		
 		if(!connected.equals("")){
 			HibernateDBService hibernateDBServiceInstance = new HibernateDBService();
-			
-			try {
-				hibernateDBServiceInstance.initialize();
-			} catch (Throwable e) {
-				System.out.println("Error catch initialize "+e);
-				response.sendRedirect("vues/errorPage.jsp");
-				return;
-			}
-			
-			AssServicePerson association = new AssServicePerson();
-			association.setPersonID(1);
-//			Service service = new Service("titre", "description", "categorie", type.DEMANDE, new Date());
-//			hibernateDBServiceInstance.ajoutService(service);
-			Service service = hibernateDBServiceInstance.getService(2);
-			association.setService(service);
-			hibernateDBServiceInstance.attacherPersonAService(association);
 			
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("vues/servicesList.jsp");
 			request.setAttribute("title", "Liste de services");

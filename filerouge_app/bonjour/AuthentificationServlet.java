@@ -1,6 +1,7 @@
 package bonjour;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,8 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.hibernate.Query;
+
 import persons.Person;
 import persons.SQLPersonsDB;
+import service.Service;
 
 /**
  * A Servlet which adds a product to the database and displays a confirmation or error message on
@@ -58,14 +62,9 @@ public class AuthentificationServlet extends HttpServlet {
 		        
 		        HibernateDBService hibernateDBServiceInstance = new HibernateDBService();
 				
-				try {
-					hibernateDBServiceInstance.initialize();
-				} catch (Throwable e) {
-					System.out.println("Error catch initialize");
-					response.sendRedirect("vues/errorPage.jsp");
-					return;
-				}
-				request.getSession(true).setAttribute("userServices", hibernateDBServiceInstance.getAllServices());
+				HibernateDBUserService hibernateDBUserServiceInstance = new HibernateDBUserService();
+				List<Service> userServicesDemande = hibernateDBUserServiceInstance.getServicesDemande(p.getEmail());
+				request.getSession(true).setAttribute("userServicesDemande", userServicesDemande);
 		        
 			} else {
 		        request.setAttribute("title", "Resultat d'authentication failed");

@@ -8,10 +8,15 @@
 
   <session-factory>
 
-    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <!-- <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
     <property name="connection.url">jdbc:mysql://mysql.info.unicaen.fr:3306/21408279_6</property>
     <property name="connection.username">21408279</property>
-    <property name="connection.password">5C11E67</property>
+    <property name="connection.password">5C11E67</property> -->
+    
+    <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="connection.url">jdbc:mysql://127.0.0.1:3306/j2ee</property>
+    <property name="connection.username">j2ee</property>
+    <property name="connection.password">123456</property>
 
     <property name="connection.pool_size">1</property>
     <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>

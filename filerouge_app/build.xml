@@ -2,21 +2,22 @@
 <project name="FileRouge" default="dist">
 
 
-<property name="autodeploydir" value="../../../j2eedomain/autodeploy" />
+<!-- <property name="autodeploydir" value="../../../j2eedomain/autodeploy" />
 <path id="jee">
   <fileset dir="/usr/local/glassfish/glassfish/modules/">
     <include name="*.jar"/>
   </fileset>
 </path>
-	
-<!--
+   -->
+
+
 <property name="autodeploydir" value="d:\Programs\Java\java_ee_sdk-7u2\glassfish4\glassfish\domains\testdomain\autodeploy\" />
 <path id="jee">
   <fileset dir="d:\Programs\Java\java_ee_sdk-7u2\glassfish4\glassfish\modules\">
     <include name="*.jar"/>
   </fileset>
 </path>
--->
+
 <path id="external">
   <fileset dir="lib/">
     <include name="**/*.jar"/>

@@ -20,7 +20,8 @@ public class HibernateDB {
 	
 	// Handling Hibernate sessions ===================================================
 
-    protected void initialize () throws InvalidMappingException {
+    @SuppressWarnings("deprecation")
+	protected void initialize () throws InvalidMappingException {
         StandardServiceRegistry registry = null;
 		try {
 //	            registry = new StandardServiceRegistryBuilder().configure().build();

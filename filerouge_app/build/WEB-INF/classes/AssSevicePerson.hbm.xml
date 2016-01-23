@@ -4,14 +4,15 @@
 "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
-<hibernate-mapping package="service">
+<hibernate-mapping package="bonjour">
 
   <class name="AssServicePerson" table="service_person">
     <id name="id" column="id">
     	<generator class="increment"/>
     </id>
     <property name="personID" />
-    <many-to-one name="service" class="Service"/>
+    <property name="typeService" />
+    <many-to-one name="service" class="service.Service"/>
   </class>
 
 </hibernate-mapping>

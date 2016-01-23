@@ -35,6 +35,10 @@
     <servlet-class>bonjour.ServiceRetirerServlet</servlet-class>
   </servlet>
   <servlet>
+    <servlet-name>AttacherPersonAService</servlet-name>
+    <servlet-class>bonjour.AttacherPersonAService</servlet-class>
+  </servlet>
+  <servlet>
     <servlet-name>Accueil</servlet-name>
     <jsp-file>/index.jsp</jsp-file>
   </servlet>
@@ -60,12 +64,16 @@
     <url-pattern>/retirerAssociation/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
+    <servlet-name>AttacherPersonAService</servlet-name>
+    <url-pattern>/ajouterAssociation/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
     <servlet-name>Accueil</servlet-name>
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
  
 
-  <env-entry>
+  <!-- <env-entry>
     <env-entry-name>host</env-entry-name>
     <env-entry-type>java.lang.String</env-entry-type>
     <env-entry-value>mysql.info.unicaen.fr</env-entry-value>
@@ -87,6 +95,36 @@
     <env-entry-name>password</env-entry-name>
     <env-entry-type>java.lang.String</env-entry-type>
     <env-entry-value>5C11E67</env-entry-value>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>table</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>products</env-entry-value>
+  </env-entry> -->
+
+  <env-entry>
+    <env-entry-name>host</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>127.0.0.1</env-entry-value>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>database</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>j2ee</env-entry-value>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>username</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>j2ee</env-entry-value>
+  </env-entry>
+
+  <env-entry>
+    <env-entry-name>password</env-entry-name>
+    <env-entry-type>java.lang.String</env-entry-type>
+    <env-entry-value>123456</env-entry-value>
   </env-entry>
 
   <env-entry>

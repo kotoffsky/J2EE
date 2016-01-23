@@ -13,8 +13,10 @@
 	                <h3>${service.titre}</h3>
 	                <p>${service.description}</p>
 	                <p>
-	                    <a href="#" class="btn btn-default">Je fournis</a>
-	                    <a href="#" class="btn btn-default">Je demande</a>
+	                <c:if test="${! userServicesDemande.contains(service)}">
+	                    <a href="${pageContext.request.contextPath}/ajouterAssociation/offre/${service.id}" class="btn btn-default">Je fournis</a>
+	                </c:if>
+	                    <a href="${pageContext.request.contextPath}/ajouterAssociation/demande/${service.id}" class="btn btn-default">Je demande</a>
 	                </p>
 	            </div>
 	        </div>

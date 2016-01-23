@@ -7,7 +7,6 @@ package persons;
  */
 public class Person {
 
-    /** The person's name. */
     protected String name;
 
     /** The person's first name. */

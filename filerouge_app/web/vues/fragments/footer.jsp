@@ -23,7 +23,7 @@
 			       <h2>Bienvenue ${name} ${firstName}</h2>
 			       <h3>Je fournis</h3>
 			       	<ul class="list-group">
-			       	<c:forEach var="service" items="${userServices}">
+			       	<c:forEach var="service" items="${userServicesDemande}">
 			            <li class="list-group-item">
 				            <a class="btn btn-xs btn-warning pull-right" href="${pageContext.request.contextPath}/retirerAssociation/${service.id}">
 				              <span class="glyphicon glyphicon-trash"></span>
@@ -34,7 +34,7 @@
 					</ul>
 					<h3>Je demande</h3>
 			       	<ul class="list-group">
-			       	<c:forEach var="service" items="${userServices}">
+			       	<c:forEach var="service" items="${userServicesDemande}">
 			            <li class="list-group-item">
 				            <button class="btn btn-xs btn-warning pull-right">
 				              <span class="glyphicon glyphicon-trash"></span>
