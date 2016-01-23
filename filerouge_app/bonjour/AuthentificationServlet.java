@@ -61,7 +61,6 @@ public class AuthentificationServlet extends HttpServlet {
 		        request.getSession(true).setAttribute("firstName", p.getFirstName());
 		        
 		        HibernateDBService hibernateDBServiceInstance = new HibernateDBService();
-				
 				HibernateDBUserService hibernateDBUserServiceInstance = new HibernateDBUserService();
 				List<Service> userServicesDemande = hibernateDBUserServiceInstance.getServicesDemande(p.getEmail());
 				request.getSession(true).setAttribute("userServicesDemande", userServicesDemande);

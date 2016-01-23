@@ -1,5 +1,6 @@
 <jsp:include page="fragments/header.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 	<div class="row">
 	    <div class="col-lg-12">
 	        <h3>${title}</h3>
@@ -13,10 +14,22 @@
 	                <h3>${service.titre}</h3>
 	                <p>${service.description}</p>
 	                <p>
-	                <c:if test="${! userServicesDemande.contains(service)}">
-	                    <a href="${pageContext.request.contextPath}/ajouterAssociation/offre/${service.id}" class="btn btn-default">Je fournis</a>
-	                </c:if>
-	                    <a href="${pageContext.request.contextPath}/ajouterAssociation/demande/${service.id}" class="btn btn-default">Je demande</a>
+						<c:set var="contains" value="false" />
+						<c:forEach var="demandeService" items="${userServicesDemande}">
+						  <c:if test="${demandeService.id eq service.id}">
+						    <c:set var="contains" value="true" />
+						    <p>Found TEST string<p>
+						  </c:if>
+						</c:forEach>
+		                <c:choose>
+						    <c:when test="${contains}">
+						        <a href="${pageContext.request.contextPath}/retirerAssociation/demande/${service.id}" class="btn btn-default">Je ne demande plus</a>
+						    </c:when>
+						    <c:otherwise>
+						        <a href="${pageContext.request.contextPath}/ajouterAssociation/demande/${service.id}" class="btn btn-default">Je demande</a>
+						    </c:otherwise>
+						</c:choose>
+	                    <!-- <a href="${pageContext.request.contextPath}/ajouterAssociation/offre/${service.id}" class="btn btn-default">Je fournis</a> -->
 	                </p>
 	            </div>
 	        </div>

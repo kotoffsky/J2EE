@@ -40,8 +40,14 @@ public class HibernateDBUserService extends HibernateDB{
 		    if (session != null) {
 				session.close();
 			}
-		    throw e;
+		    try {
+				throw e;
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		} 
+	    return null;
 	}
 	
 	public void attacherPersonAService(AssServicePerson association) {
@@ -59,7 +65,43 @@ public class HibernateDBUserService extends HibernateDB{
 		    if (session != null) {
 				session.close();
 			}
-		    throw e;
+		    try {
+				throw e;
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} 
+    }
+	
+	public void retiterPersonDeService(AssServicePerson association) {
+    	Transaction transaction=null;
+		Session session = null;
+	    try {
+	    	session=sessionFactory.openSession();
+		    transaction=session.beginTransaction();
+//		    session.delete(association);
+		    String hql = "delete FROM AssServicePerson P WHERE P.personID = '"+association.getPersonID()+"' and P.typeService='"+association.getTypeService()+"' and P.service='"+association.getService().getId()+"'";
+			Query query = session.createQuery(hql);
+			int result = query.executeUpdate();
+			 
+			if (result > 0) {
+			    System.out.println("Expensive products was removed");
+			}
+		    transaction.commit();
+		} catch (Throwable e) {
+		    if (transaction!=null) {
+		        transaction.rollback();
+		    }
+		    if (session != null) {
+				session.close();
+			}
+		    try {
+				throw e;
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		} 
     }
 }

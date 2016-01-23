@@ -13,9 +13,9 @@ import javax.servlet.RequestDispatcher;
 import persons.*;
 
 /**
- * A Servlet which reads a list of strings and prints it sorted.
- * @author Bruno Zanuttini, Universit&eacute; de Caen Basse-Normandie, France.
- * @since January, 2012
+ * A Servlet of user registration
+ * @author Nick Kharaim, Amani Lahbib, Universit&eacute; de Caen Basse-Normandie, France.
+ * @since January, 2016
  */
 public class BonjourSignup extends HttpServlet {
 

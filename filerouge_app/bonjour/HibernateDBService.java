@@ -37,8 +37,14 @@ public class HibernateDBService extends HibernateDB{
 		    if (session != null) {
 				session.close();
 			}
-		    throw e;
-		} 
+		    try {
+				throw e;
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+		return null; 
 	}
 	
     public void ajoutService(Service service) {
@@ -56,7 +62,12 @@ public class HibernateDBService extends HibernateDB{
 		    if (session != null) {
 				session.close();
 			}
-		    throw e;
+		    try {
+				throw e;
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		} 
     }
     
@@ -76,7 +87,12 @@ public class HibernateDBService extends HibernateDB{
 		    if (session != null) {
 				session.close();
 			}
-		    throw e;
+		    try {
+				throw e;
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
 	    return serviceDemande;
     }

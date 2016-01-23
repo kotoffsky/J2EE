@@ -31,12 +31,12 @@
     <servlet-class>bonjour.ServiceAjoutServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>ServiceRetirerServlet</servlet-name>
-    <servlet-class>bonjour.ServiceRetirerServlet</servlet-class>
+    <servlet-name>ServiceRetirerAssociation</servlet-name>
+    <servlet-class>bonjour.ServiceRetirerAssociation</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>AttacherPersonAService</servlet-name>
-    <servlet-class>bonjour.AttacherPersonAService</servlet-class>
+    <servlet-name>ServiceAjouterAssociation</servlet-name>
+    <servlet-class>bonjour.ServiceAjouterAssociation</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>Accueil</servlet-name>
@@ -60,11 +60,11 @@
     <url-pattern>/ajouterService</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>ServiceRetirerServlet</servlet-name>
+    <servlet-name>ServiceRetirerAssociation</servlet-name>
     <url-pattern>/retirerAssociation/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>AttacherPersonAService</servlet-name>
+    <servlet-name>ServiceAjouterAssociation</servlet-name>
     <url-pattern>/ajouterAssociation/*</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
@@ -112,19 +112,19 @@
   <env-entry>
     <env-entry-name>database</env-entry-name>
     <env-entry-type>java.lang.String</env-entry-type>
-    <env-entry-value>j2ee</env-entry-value>
+    <env-entry-value>j2eedb</env-entry-value>
   </env-entry>
 
   <env-entry>
     <env-entry-name>username</env-entry-name>
     <env-entry-type>java.lang.String</env-entry-type>
-    <env-entry-value>j2ee</env-entry-value>
+    <env-entry-value>root</env-entry-value>
   </env-entry>
 
   <env-entry>
     <env-entry-name>password</env-entry-name>
     <env-entry-type>java.lang.String</env-entry-type>
-    <env-entry-value>123456</env-entry-value>
+    <env-entry-value>root</env-entry-value>
   </env-entry>
 
   <env-entry>

@@ -32,7 +32,12 @@ public class HibernateDB {
 		catch (Throwable e) {
 	        System.out.println("Erreur lors de l'initialisation de la session factory: "+e);
 	        StandardServiceRegistryBuilder.destroy(registry);
-	        throw e;
+	        try {
+				throw e;
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 		}
     }
 
