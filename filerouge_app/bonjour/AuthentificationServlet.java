@@ -64,6 +64,8 @@ public class AuthentificationServlet extends HttpServlet {
 				HibernateDBUserService hibernateDBUserServiceInstance = new HibernateDBUserService();
 				List<Service> userServicesDemande = hibernateDBUserServiceInstance.getServicesDemande(p.getEmail());
 				request.getSession(true).setAttribute("userServicesDemande", userServicesDemande);
+				List<Service> userServicesOffre = hibernateDBUserServiceInstance.getServicesOffre(p.getEmail());
+				request.getSession(true).setAttribute("userServicesOffre", userServicesOffre);
 		        
 			} else {
 		        request.setAttribute("title", "Resultat d'authentication failed");

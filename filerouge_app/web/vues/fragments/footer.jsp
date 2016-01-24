@@ -23,9 +23,9 @@
 			       <h2>Bienvenue ${name} ${firstName}</h2>
 			       <h3>Je fournis</h3>
 			       	<ul class="list-group">
-			       	<c:forEach var="service" items="${userServicesDemande}">
+			       	<c:forEach var="service" items="${userServicesOffre}">
 			            <li class="list-group-item">
-				            <a class="btn btn-xs btn-warning pull-right" href="${pageContext.request.contextPath}/retirerAssociation/${service.id}">
+				            <a class="btn btn-xs btn-warning pull-right" href="${pageContext.request.contextPath}/retirerAssociation/offre/${service.id}">
 				              <span class="glyphicon glyphicon-trash"></span>
 				            </a>
 			                <span>${service.titre}</span>
@@ -36,9 +36,9 @@
 			       	<ul class="list-group">
 			       	<c:forEach var="service" items="${userServicesDemande}">
 			            <li class="list-group-item">
-				            <button class="btn btn-xs btn-warning pull-right">
+				            <a class="btn btn-xs btn-warning pull-right" href="${pageContext.request.contextPath}/retirerAssociation/demande/${service.id}">
 				              <span class="glyphicon glyphicon-trash"></span>
-				            </button>
+				            </a>
 			                <span>${service.titre}</span>
 			            </li>
 					</c:forEach>

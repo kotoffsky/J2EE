@@ -18,7 +18,6 @@
 						<c:forEach var="demandeService" items="${userServicesDemande}">
 						  <c:if test="${demandeService.id eq service.id}">
 						    <c:set var="contains" value="true" />
-						    <p>Found TEST string<p>
 						  </c:if>
 						</c:forEach>
 		                <c:choose>
@@ -29,7 +28,20 @@
 						        <a href="${pageContext.request.contextPath}/ajouterAssociation/demande/${service.id}" class="btn btn-default">Je demande</a>
 						    </c:otherwise>
 						</c:choose>
-	                    <!-- <a href="${pageContext.request.contextPath}/ajouterAssociation/offre/${service.id}" class="btn btn-default">Je fournis</a> -->
+						<c:set var="contains" value="false" />
+						<c:forEach var="demandeService" items="${userServicesOffre}">
+						  <c:if test="${demandeService.id eq service.id}">
+						    <c:set var="contains" value="true" />
+						  </c:if>
+						</c:forEach>
+						<c:choose>
+						    <c:when test="${contains}">
+						        <a href="${pageContext.request.contextPath}/retirerAssociation/offre/${service.id}" class="btn btn-default">Je n'ai plus besoin</a>
+						    </c:when>
+						    <c:otherwise>
+						        <a href="${pageContext.request.contextPath}/ajouterAssociation/offre/${service.id}" class="btn btn-default">Je fournis</a>
+						    </c:otherwise>
+						</c:choose>
 	                </p>
 	            </div>
 	        </div>

@@ -49,6 +49,35 @@ public class HibernateDBUserService extends HibernateDB{
 		} 
 	    return null;
 	}
+	public List<Service> getServicesOffre(String personID) {
+		Transaction transaction=null;
+		Session session = null;
+		System.out.println("getServicesDemande");
+	    try {
+	    	session=sessionFactory.openSession();
+		    transaction=session.beginTransaction();
+		    String hql = "select s FROM Service s, AssServicePerson P WHERE P.personID = '"+personID+"' and s.id = P.service and P.typeService='offre'";
+			Query query = session.createQuery(hql);
+		    List<Service> allServices=(List<Service>)query.list();
+		    System.out.println("result of allservices "+allServices);
+		    transaction.commit();
+		    return allServices;
+		} catch (Throwable e) {
+		    if (transaction!=null) {
+		        transaction.rollback();
+		    }
+		    if (session != null) {
+				session.close();
+			}
+		    try {
+				throw e;
+			} catch (Throwable e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		} 
+	    return null;
+	}
 	
 	public void attacherPersonAService(AssServicePerson association) {
     	Transaction transaction=null;

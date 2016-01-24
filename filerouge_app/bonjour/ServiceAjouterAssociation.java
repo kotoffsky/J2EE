@@ -43,6 +43,8 @@ public class ServiceAjouterAssociation extends HttpServlet {
 			//mise à jour de la session, liste de services de l'utilisateur courant
 			List<Service> userServicesDemande = hibernateDBUserServiceInstance.getServicesDemande(connected);
 			request.getSession(true).setAttribute("userServicesDemande", userServicesDemande);
+			List<Service> userServicesOffre = hibernateDBUserServiceInstance.getServicesOffre(connected);
+			request.getSession(true).setAttribute("userServicesOffre", userServicesOffre);
 			
 			//redirection vers la page de services
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/services");
