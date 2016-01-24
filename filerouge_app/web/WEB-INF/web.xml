@@ -27,8 +27,12 @@
     <servlet-class>bonjour.ServiceServlet</servlet-class>
   </servlet>
   <servlet>
-    <servlet-name>ServiceAjoutServlet</servlet-name>
-    <servlet-class>bonjour.ServiceAjoutServlet</servlet-class>
+    <servlet-name>ServiceAjouterFormulaire</servlet-name>
+    <servlet-class>bonjour.ServiceAjouterFormulaire</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>ServiceAjouter</servlet-name>
+    <servlet-class>bonjour.ServiceAjouter</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>ServiceRetirerAssociation</servlet-name>
@@ -56,7 +60,11 @@
     <url-pattern>/services</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-    <servlet-name>ServiceAjoutServlet</servlet-name>
+    <servlet-name>ServiceAjouterFormulaire</servlet-name>
+    <url-pattern>/serviceAjouterFormulaire</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ServiceAjouter</servlet-name>
     <url-pattern>/ajouterService</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
@@ -71,6 +79,7 @@
     <servlet-name>Accueil</servlet-name>
     <url-pattern>/home</url-pattern>
   </servlet-mapping>
+  
  
 
   <!-- <env-entry>

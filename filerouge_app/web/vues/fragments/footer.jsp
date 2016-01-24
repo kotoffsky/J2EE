@@ -43,7 +43,7 @@
 			            </li>
 					</c:forEach>
 					</ul>
-			        <a type="button" class="btn btn-success" href="${pageContext.request.contextPath}/ajouterService"><span class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter un service</a>
+			        <a type="button" class="btn btn-success" href="${pageContext.request.contextPath}/serviceAjouterFormulaire"><span class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter un service</a>
 			    </c:otherwise>
 			</c:choose>
            

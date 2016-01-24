@@ -16,13 +16,24 @@ import service.Service;
 import service.ServiceTypeEnum;
 
 public class ServiceAjoutServlet extends HttpServlet {
-	
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		HibernateDBService hibernateDBServiceInstance = new HibernateDBService();
+		
+		String serviceName = request.getParameter("serviceName");
+		String serviceDescription = request.getParameter("serviceDescription");
+		String message = "";
+		
+		if(serviceName == "" || serviceDescription == "") {
+			message = "Indiquez nom et description de service";
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/ajouterService");
+	        requestDispatcher.forward(request, response);
+		}
 		
 		try {
 			hibernateDBServiceInstance.initialize();
-			Service service = new Service("titre", "description", "categorie", new Date());
+			Service service = new Service(serviceName, serviceDescription, "categorie", new Date());
 			hibernateDBServiceInstance.ajoutService(service);
 		} catch (Throwable e) {
 			System.out.println("Error catch initialize");
