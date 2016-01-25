@@ -16,12 +16,12 @@
 				        <input name="password" type="password" class="form-control">
 				      </div>
 				      <div><a href="signup.jsp">Insciption</a></div>
-				      <button type="submit" class="btn btn-default">Envoyer</button>
+				      <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Entrer</button>
 				    </form>
 			    </c:when>
 			    <c:otherwise>
 			       <h2>Bienvenue ${name} ${firstName}</h2>
-			       <div><a href="${pageContext.request.contextPath}/logout">Logout</a></div>
+			       <a type="button" class="btn btn-default btn-sm pull-right" href="${pageContext.request.contextPath}/logout">Logout&nbsp;<span class="glyphicon glyphicon-log-out"></span></a>
 			       <h3>Je fournis</h3>
 			       	<ul class="list-group">
 			       	<c:forEach var="service" items="${userServicesOffre}">
