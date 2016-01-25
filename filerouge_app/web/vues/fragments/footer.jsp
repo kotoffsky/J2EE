@@ -21,6 +21,7 @@
 			    </c:when>
 			    <c:otherwise>
 			       <h2>Bienvenue ${name} ${firstName}</h2>
+			       <div><a href="${pageContext.request.contextPath}/logout">Logout</a></div>
 			       <h3>Je fournis</h3>
 			       	<ul class="list-group">
 			       	<c:forEach var="service" items="${userServicesOffre}">

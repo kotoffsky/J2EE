@@ -46,6 +46,10 @@
     <servlet-name>Accueil</servlet-name>
     <jsp-file>/index.jsp</jsp-file>
   </servlet>
+  <servlet>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>bonjour.Logout</servlet-class>
+  </servlet>
   
   <servlet-mapping>
     <servlet-name>AuthentificationServlet</servlet-name>
@@ -78,6 +82,10 @@
   <servlet-mapping>
     <servlet-name>Accueil</servlet-name>
     <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/logout</url-pattern>
   </servlet-mapping>
   
  
