@@ -1,13 +1,32 @@
 package bonjour;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
+import org.hibernate.type.TimestampType;
+
 import service.Service;
 
+/**
+ * Association class of a service to a user
+ * @author Nick Kharaim, Amani Lahbib
+ *
+ */
 public class AssServicePerson {
 	private Long id;
 	private String personID;
 	private Service service;
 	private String typeService;
+	private Long dateDeLimite;
 	
+	public Long getDateDeLimite() {
+		return dateDeLimite;
+	}
+
+	public void setDateDeLimite(Long timestamp) {
+		this.dateDeLimite = timestamp;
+	}
+
 	public AssServicePerson() {
 		// TODO Auto-generated constructor stub
 	}

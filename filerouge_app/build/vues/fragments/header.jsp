@@ -18,6 +18,12 @@
   .nopadding {
   	padding: 0;
   }
+  .btn.btn-default.offre {
+  	background: #8FD4BC none repeat scroll 0% 0%;
+  }
+  .btn.btn-default.demande {
+    background: #D2B48C none repeat scroll 0% 0%;
+	}
   </style>
 </head>
 <body>

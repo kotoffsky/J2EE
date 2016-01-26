@@ -1,6 +1,8 @@
 package bonjour;
 
 import java.io.IOException;
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -9,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import org.hibernate.type.TimestampType;
 
 import service.Service;
 
@@ -35,8 +39,9 @@ public class ServiceAjouterAssociation extends HttpServlet {
 			
 			AssServicePerson association = new AssServicePerson();
 			association.setPersonID(connected);
-			association.setService(service);
 			association.setTypeService(pathParts[1]);
+			association.setService(service);
+			association.setDateDeLimite(Long.parseLong(pathParts[3]));
 			//enregister l'association
 			hibernateDBUserServiceInstance.attacherPersonAService(association);
 			

@@ -12,6 +12,7 @@
     </id>
     <property name="personID" />
     <property name="typeService" />
+    <property name="dateDeLimite" />
     <many-to-one name="service" class="service.Service"/>
   </class>
 

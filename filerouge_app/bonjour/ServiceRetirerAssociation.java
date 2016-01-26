@@ -42,10 +42,7 @@ public class ServiceRetirerAssociation extends HttpServlet {
 			hibernateDBUserServiceInstance.retiterPersonDeService(association);
 			
 			//mise à jour de la session, liste de services de l'utilisateur courant
-			List<Service> userServicesDemande = hibernateDBUserServiceInstance.getServicesDemande(connected);
-			request.getSession(true).setAttribute("userServicesDemande", userServicesDemande);
-			List<Service> userServicesOffre = hibernateDBUserServiceInstance.getServicesOffre(connected);
-			request.getSession(true).setAttribute("userServicesOffre", userServicesOffre);
+			AuthentificationServlet.miseAJourUserSession(request, connected);
 			
 			//redirection vers la page de services
 			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/services");

@@ -60,12 +60,7 @@ public class AuthentificationServlet extends HttpServlet {
 		        request.getSession(true).setAttribute("name", p.getName());
 		        request.getSession(true).setAttribute("firstName", p.getFirstName());
 		        
-		        HibernateDBService hibernateDBServiceInstance = new HibernateDBService();
-				HibernateDBUserService hibernateDBUserServiceInstance = new HibernateDBUserService();
-				List<Service> userServicesDemande = hibernateDBUserServiceInstance.getServicesDemande(p.getEmail());
-				request.getSession(true).setAttribute("userServicesDemande", userServicesDemande);
-				List<Service> userServicesOffre = hibernateDBUserServiceInstance.getServicesOffre(p.getEmail());
-				request.getSession(true).setAttribute("userServicesOffre", userServicesOffre);
+		        this.miseAJourUserSession(request, userEmail);
 		        
 			} else {
 		        request.setAttribute("title", "Resultat d'authentication failed");
@@ -94,6 +89,15 @@ public class AuthentificationServlet extends HttpServlet {
 //        this.terminate(request,response,"Nous avons bien pris en compte le nouveau produit, merci.");
 
     }
+    
+    public static void miseAJourUserSession(HttpServletRequest request,String email) {
+    	HibernateDBService hibernateDBServiceInstance = new HibernateDBService();
+		HibernateDBUserService hibernateDBUserServiceInstance = new HibernateDBUserService();
+		List<Service> userServicesDemande = hibernateDBUserServiceInstance.getServicesDemande(email);
+		request.getSession(true).setAttribute("userServicesDemande", userServicesDemande);
+		List<Service> userServicesOffre = hibernateDBUserServiceInstance.getServicesOffre(email);
+		request.getSession(true).setAttribute("userServicesOffre", userServicesOffre);
+	}
 
     /**
      * Terminates the response of this servlet by displaying table of contents and a message.
