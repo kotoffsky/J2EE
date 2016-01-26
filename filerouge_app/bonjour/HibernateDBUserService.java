@@ -1,9 +1,13 @@
 package bonjour;
 
 import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -20,19 +24,41 @@ public class HibernateDBUserService extends HibernateDB{
 	public HibernateDBUserService() {
 		this.initialize();
 	}
-	public List<Service> getServicesDemande(String personID) {
+	public List<Object[]> getServicesDemande(String personID) {
 		Transaction transaction=null;
 		Session session = null;
 		System.out.println("getServicesDemande");
 	    try {
+	    	
+		    
+	    	
+	    	
 	    	session=sessionFactory.openSession();
 		    transaction=session.beginTransaction();
-		    String hql = "select s FROM Service s, AssServicePerson P WHERE P.personID = '"+personID+"' and s.id = P.service and P.typeService='demande'";
-			Query query = session.createQuery(hql);
-		    List<Service> allServices=(List<Service>)query.list();
-		    System.out.println("result of allservices "+allServices);
-		    transaction.commit();
-		    return allServices;
+		    
+		    String hql1 = "FROM Service s, AssServicePerson P WHERE P.personID = '"+personID+"' and s.id = P.service and P.typeService='demande'";
+			Query query1 = session.createQuery(hql1);
+			List<Object[]> rows = query1.list();
+		    for (Object[] row : rows) {
+		    	System.out.println("demande join result "+ ((Service)row[0]).getTitre()+" "+((AssServicePerson)row[1]).getDateDeLimite());
+		    	
+		    	
+		    	Date date = new Date();
+		    	date.setTime(((AssServicePerson)row[1]).getDateDeLimite() * 1000L);
+		    	DateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:MM:ss.SSS");
+		    	  format.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+		    	  String dateDeLimite = format.format(date);
+		    	System.out.println("date de limit est "+dateDeLimite);
+			}
+		    
+		    return rows;
+		    
+//		    String hql = "select s FROM Service s, AssServicePerson P WHERE P.personID = '"+personID+"' and s.id = P.service and P.typeService='demande'";
+//			Query query = session.createQuery(hql);
+//		    List<Service> allServices=(List<Service>)query.list();
+//		    System.out.println("result of allservices "+allServices);
+//		    transaction.commit();
+//		    return allServices;
 		} catch (Throwable e) {
 		    if (transaction!=null) {
 		        transaction.rollback();

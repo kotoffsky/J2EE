@@ -16,7 +16,7 @@
 	                <p>
 						<c:set var="contains" value="false" />
 						<c:forEach var="demandeService" items="${userServicesDemande}">
-						  <c:if test="${demandeService.id eq service.id}">
+						  <c:if test="${demandeService[0].id eq service.id}">
 						    <c:set var="contains" value="true" />
 						  </c:if>
 						</c:forEach>
@@ -29,8 +29,8 @@
 						    </c:otherwise>
 						</c:choose>
 						<c:set var="contains" value="false" />
-						<c:forEach var="demandeService" items="${userServicesOffre}">
-						  <c:if test="${demandeService.id eq service.id}">
+						<c:forEach var="offreService" items="${userServicesOffre}">
+						  <c:if test="${offreService.id eq service.id}">
 						    <c:set var="contains" value="true" />
 						  </c:if>
 						</c:forEach>
@@ -103,7 +103,12 @@
 		$('.save-assoc').click(function() {
 			var datevalue = $('.bs-example-modal-sm').find('.datevalue').val();
 			console.log(datevalue);
-			var timestampVal = (new Date(datevalue).getTime() / 1000).toFixed(0);
+			if(datevalue=="" || datevalue==undefined){
+				console.log("Choisissez la date de limite pour le service");
+				var timestampVal = (new Date().getTime() / 1000).toFixed(0);
+			} else {
+				var timestampVal = (new Date(datevalue).getTime() / 1000).toFixed(0);
+			}
 			console.log(timestampVal);
 			link += '/'+timestampVal;
 			console.log(link);

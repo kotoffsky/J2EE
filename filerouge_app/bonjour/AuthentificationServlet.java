@@ -93,7 +93,7 @@ public class AuthentificationServlet extends HttpServlet {
     public static void miseAJourUserSession(HttpServletRequest request,String email) {
     	HibernateDBService hibernateDBServiceInstance = new HibernateDBService();
 		HibernateDBUserService hibernateDBUserServiceInstance = new HibernateDBUserService();
-		List<Service> userServicesDemande = hibernateDBUserServiceInstance.getServicesDemande(email);
+		List<Object[]> userServicesDemande = hibernateDBUserServiceInstance.getServicesDemande(email);
 		request.getSession(true).setAttribute("userServicesDemande", userServicesDemande);
 		List<Service> userServicesOffre = hibernateDBUserServiceInstance.getServicesOffre(email);
 		request.getSession(true).setAttribute("userServicesOffre", userServicesOffre);

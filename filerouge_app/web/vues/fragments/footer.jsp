@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 </div><!-- /.col-md-8 -->
 
 <div class="col-md-4">
@@ -34,13 +35,16 @@
 					</c:forEach>
 					</ul>
 					<h3>Je demande</h3>
-			       	<ul class="list-group">
+			       	<ul class="list-group user-list">
 			       	<c:forEach var="service" items="${userServicesDemande}">
 			            <li class="list-group-item">
-				            <a class="btn btn-xs btn-warning pull-right" href="${pageContext.request.contextPath}/retirerAssociation/demande/${service.id}">
+				            <a class="btn btn-xs btn-warning pull-right" href="${pageContext.request.contextPath}/retirerAssociation/demande/${service[0].id}">
 				              <span class="glyphicon glyphicon-trash"></span>
 				            </a>
-			                <span>${service.titre}</span>
+			                <span>${service[0].titre}</span><br>
+			                <jsp:useBean id="dateValue" class="java.util.Date"/>
+							<jsp:setProperty name="dateValue" property="time" value="${service[1].dateDeLimite * 1000}"/>
+			                <span>Actuel jusqu'à : <b><fmt:formatDate value="${dateValue}" pattern="dd-MM-yyyy HH:mm"/></b></span>
 			            </li>
 					</c:forEach>
 					</ul>

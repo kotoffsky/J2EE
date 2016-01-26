@@ -24,6 +24,9 @@
   .btn.btn-default.demande {
     background: #D2B48C none repeat scroll 0% 0%;
 	}
+	.user-list .list-group-item .pull-right{
+		margin-top: 10px;
+	}
   </style>
 </head>
 <body>
