@@ -27,10 +27,13 @@
 			       	<ul class="list-group">
 			       	<c:forEach var="service" items="${userServicesOffre}">
 			            <li class="list-group-item">
-				            <a class="btn btn-xs btn-warning pull-right" href="${pageContext.request.contextPath}/retirerAssociation/offre/${service.id}">
+				            <a class="btn btn-xs btn-warning pull-right" href="${pageContext.request.contextPath}/retirerAssociation/offre/${service[0].id}">
 				              <span class="glyphicon glyphicon-trash"></span>
 				            </a>
-			                <span>${service.titre}</span>
+			                <span>${service[0].titre}</span><br>
+			                <jsp:useBean id="dateValueOffre" class="java.util.Date"/>
+							<jsp:setProperty name="dateValueOffre" property="time" value="${service[1].dateDeLimite * 1000}"/>
+			                <span>Actuel jusqu'à : <b><fmt:formatDate value="${dateValueOffre}" pattern="dd-MM-yyyy HH:mm"/></b></span>
 			            </li>
 					</c:forEach>
 					</ul>
@@ -42,13 +45,25 @@
 				              <span class="glyphicon glyphicon-trash"></span>
 				            </a>
 			                <span>${service[0].titre}</span><br>
-			                <jsp:useBean id="dateValue" class="java.util.Date"/>
-							<jsp:setProperty name="dateValue" property="time" value="${service[1].dateDeLimite * 1000}"/>
-			                <span>Actuel jusqu'à : <b><fmt:formatDate value="${dateValue}" pattern="dd-MM-yyyy HH:mm"/></b></span>
+			                <jsp:useBean id="dateValueDemande" class="java.util.Date"/>
+							<jsp:setProperty name="dateValueDemande" property="time" value="${service[1].dateDeLimite * 1000}"/>
+			                <span>Actuel jusqu'à : <b><fmt:formatDate value="${dateValueDemande}" pattern="dd-MM-yyyy HH:mm"/></b></span>
 			            </li>
 					</c:forEach>
 					</ul>
-			        <a type="button" class="btn btn-success" href="${pageContext.request.contextPath}/serviceAjouterFormulaire"><span class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter un service</a>
+					<div class="row">
+						<div class="col-md-12">
+				        	<a type="button" class="btn btn-block btn-lg btn-warning lancer-cycle" href="${pageContext.request.contextPath}/collaborationRecherche"><span class="glyphicon glyphicon-play-circle"></span>&nbsp;Trouver des collaborateurs</a>
+				        </div>
+				    </div>
+				    <br>
+				    <div class="row">
+				        <div class="col-md-2"></div>
+				        <div class="col-md-8">
+				        	<a type="button" class="btn btn-block btn-success" href="${pageContext.request.contextPath}/serviceAjouterFormulaire"><span class="glyphicon glyphicon-plus"></span>&nbsp;Ajouter un service</a>
+				        </div>
+				        <div class="col-md-2"></div>
+			        </div>
 			    </c:otherwise>
 			</c:choose>
            

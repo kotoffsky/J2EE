@@ -30,7 +30,7 @@
 						</c:choose>
 						<c:set var="contains" value="false" />
 						<c:forEach var="offreService" items="${userServicesOffre}">
-						  <c:if test="${offreService.id eq service.id}">
+						  <c:if test="${offreService[0].id eq service.id}">
 						    <c:set var="contains" value="true" />
 						  </c:if>
 						</c:forEach>
@@ -50,7 +50,6 @@
 	
 	<!-- JS modal with datepicker -->
 	<!-- Small modal -->
-	<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
 	
 	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
 	  <div class="modal-dialog modal-sm">
@@ -100,7 +99,7 @@
 				$('.bs-example-modal-sm').find('.modal-title').html('Précisez la date de limite de votre offre');
 			}
 		});
-		$('.save-assoc').click(function() {
+		$('.save-assoc').click(function(event) {
 			var datevalue = $('.bs-example-modal-sm').find('.datevalue').val();
 			console.log(datevalue);
 			if(datevalue=="" || datevalue==undefined){
@@ -110,6 +109,11 @@
 				var timestampVal = (new Date(datevalue).getTime() / 1000).toFixed(0);
 			}
 			console.log(timestampVal);
+			if (timestampVal < (new Date().getTime() / 1000).toFixed(0)) {
+				console.log("La date est périmée");
+				alert("La date est périmée. Choisissez une bonne date");
+				return false;
+			}
 			link += '/'+timestampVal;
 			console.log(link);
 			$('.bs-example-modal-sm').modal('hide');

@@ -27,6 +27,15 @@
 	.user-list .list-group-item .pull-right{
 		margin-top: 10px;
 	}
+	.lancer-cycle{
+		font-size: 18px;
+		font-weight: bold;
+	}
+	.lancer-cycle .glyphicon-play-circle{
+		color: rgb(125, 180, 108);
+		font-size: 38px;
+		vertical-align: middle;
+	}
   </style>
 </head>
 <body>

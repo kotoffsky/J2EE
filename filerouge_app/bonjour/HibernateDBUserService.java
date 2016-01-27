@@ -24,25 +24,35 @@ public class HibernateDBUserService extends HibernateDB{
 	public HibernateDBUserService() {
 		this.initialize();
 	}
+	
+	/**
+	 * Select all services attached to user that he asks
+	 * @param personID
+	 * @return List of objects -> [0] - Service, [1] - AssServicePerson
+	 */
 	public List<Object[]> getServicesDemande(String personID) {
 		Transaction transaction=null;
 		Session session = null;
 		System.out.println("getServicesDemande");
 	    try {
 	    	
-		    
-	    	
-	    	
 	    	session=sessionFactory.openSession();
 		    transaction=session.beginTransaction();
 		    
-		    String hql1 = "FROM Service s, AssServicePerson P WHERE P.personID = '"+personID+"' and s.id = P.service and P.typeService='demande'";
+		    String hql1 = "FROM Service s, AssServicePerson P WHERE P.personID = '"+personID+"' and s.id = P.service and P.typeService='demande' order by P.dateDeLimite ASC";
 			Query query1 = session.createQuery(hql1);
 			List<Object[]> rows = query1.list();
 		    for (Object[] row : rows) {
+		    	//compare and delete associations that passed limit date
+		    	Long currentUnixTime = System.currentTimeMillis() / 1000L;
+		    	System.out.println("current unix time "+currentUnixTime);
+		    	if (((AssServicePerson)row[1]).getDateDeLimite() < currentUnixTime) {
+		    		this.retiterPersonDeService((AssServicePerson)row[1]); //remove from DB
+		    		rows.remove(rows.indexOf(row));//remove from output list
+		    		System.out.println("remove this association");
+		    	}
+		    	
 		    	System.out.println("demande join result "+ ((Service)row[0]).getTitre()+" "+((AssServicePerson)row[1]).getDateDeLimite());
-		    	
-		    	
 		    	Date date = new Date();
 		    	date.setTime(((AssServicePerson)row[1]).getDateDeLimite() * 1000L);
 		    	DateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:MM:ss.SSS");
@@ -52,13 +62,6 @@ public class HibernateDBUserService extends HibernateDB{
 			}
 		    
 		    return rows;
-		    
-//		    String hql = "select s FROM Service s, AssServicePerson P WHERE P.personID = '"+personID+"' and s.id = P.service and P.typeService='demande'";
-//			Query query = session.createQuery(hql);
-//		    List<Service> allServices=(List<Service>)query.list();
-//		    System.out.println("result of allservices "+allServices);
-//		    transaction.commit();
-//		    return allServices;
 		} catch (Throwable e) {
 		    if (transaction!=null) {
 		        transaction.rollback();
@@ -75,19 +78,44 @@ public class HibernateDBUserService extends HibernateDB{
 		} 
 	    return null;
 	}
-	public List<Service> getServicesOffre(String personID) {
+	
+	/**
+	 * Select all services attached to user that he gives
+	 * @param personID
+	 * @return List of objects -> [0] - Service, [1] - AssServicePerson
+	 */
+	public List<Object[]> getServicesOffre(String personID) {
 		Transaction transaction=null;
 		Session session = null;
 		System.out.println("getServicesDemande");
 	    try {
+	    	
 	    	session=sessionFactory.openSession();
 		    transaction=session.beginTransaction();
-		    String hql = "select s FROM Service s, AssServicePerson P WHERE P.personID = '"+personID+"' and s.id = P.service and P.typeService='offre'";
-			Query query = session.createQuery(hql);
-		    List<Service> allServices=(List<Service>)query.list();
-		    System.out.println("result of allservices "+allServices);
-		    transaction.commit();
-		    return allServices;
+		    
+		    String hql1 = "FROM Service s, AssServicePerson P WHERE P.personID = '"+personID+"' and s.id = P.service and P.typeService='offre' order by P.dateDeLimite ASC";
+			Query query1 = session.createQuery(hql1);
+			List<Object[]> rows = query1.list();
+		    for (Object[] row : rows) {
+		    	//compare and delete associations that passed limit date
+		    	Long currentUnixTime = System.currentTimeMillis() / 1000L;
+		    	System.out.println("current unix time "+currentUnixTime);
+		    	if (((AssServicePerson)row[1]).getDateDeLimite() < currentUnixTime) {
+		    		this.retiterPersonDeService((AssServicePerson)row[1]); //remove from DB
+		    		rows.remove(rows.indexOf(row));//remove from output list
+		    		System.out.println("remove this association");
+		    	}
+		    	
+		    	System.out.println("offre join result "+ ((Service)row[0]).getTitre()+" "+((AssServicePerson)row[1]).getDateDeLimite());
+		    	Date date = new Date();
+		    	date.setTime(((AssServicePerson)row[1]).getDateDeLimite() * 1000L);
+		    	DateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:MM:ss.SSS");
+		    	  format.setTimeZone(TimeZone.getTimeZone("Etc/UTC"));
+		    	  String dateDeLimite = format.format(date);
+		    	System.out.println("date de limit est "+dateDeLimite);
+			}
+		    
+		    return rows;
 		} catch (Throwable e) {
 		    if (transaction!=null) {
 		        transaction.rollback();

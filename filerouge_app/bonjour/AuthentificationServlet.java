@@ -95,7 +95,7 @@ public class AuthentificationServlet extends HttpServlet {
 		HibernateDBUserService hibernateDBUserServiceInstance = new HibernateDBUserService();
 		List<Object[]> userServicesDemande = hibernateDBUserServiceInstance.getServicesDemande(email);
 		request.getSession(true).setAttribute("userServicesDemande", userServicesDemande);
-		List<Service> userServicesOffre = hibernateDBUserServiceInstance.getServicesOffre(email);
+		List<Object[]> userServicesOffre = hibernateDBUserServiceInstance.getServicesOffre(email);
 		request.getSession(true).setAttribute("userServicesOffre", userServicesOffre);
 	}
 
@@ -106,8 +106,10 @@ public class AuthentificationServlet extends HttpServlet {
      * @param message The message to be forwarded to table of contents
      */
     protected void terminate (HttpServletRequest request, HttpServletResponse response, String message) throws ServletException, IOException {
-    	RequestDispatcher requestDispatcher = request.getRequestDispatcher("vues/identificationResult.jsp");
-    	requestDispatcher.forward(request, response);
+    	String contextPath = request.getContextPath();
+        response.sendRedirect(contextPath+"/services");
+//    	RequestDispatcher requestDispatcher = request.getRequestDispatcher("vues/identificationResult.jsp");
+//    	requestDispatcher.forward(request, response);
 //        response.sendRedirect(response.encodeRedirectURL(request.getContextPath()+"/vues/identificationResult.jsp?message="+message));
     }
 
