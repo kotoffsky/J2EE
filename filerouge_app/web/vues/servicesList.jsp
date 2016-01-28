@@ -6,78 +6,95 @@
 	        <h3>${title}</h3>
 	    </div>
 	</div>
-	<div class="row text-center">
-	<c:forEach var="service" items="${services}">
-	    <div class="col-md-6 col-sm-6 hero-feature">
-	        <div class="thumbnail">
-	            <div class="caption">
-	                <h3>${service.titre}</h3>
-	                <p>${service.description}</p>
-	                <p>
-						<c:set var="contains" value="false" />
-						<c:forEach var="demandeService" items="${userServicesDemande}">
-						  <c:if test="${demandeService[0].id eq service.id}">
-						    <c:set var="contains" value="true" />
-						  </c:if>
-						</c:forEach>
-		                <c:choose>
-						    <c:when test="${contains}">
-						        <a href="${pageContext.request.contextPath}/retirerAssociation/demande/${service.id}" class="btn btn-default"><span class="glyphicon glyphicon-remove text-danger"></span>&nbsp;Je n'ai plus besoin</a>
-						    </c:when>
-						    <c:otherwise>
-						        <a href="${pageContext.request.contextPath}/ajouterAssociation/demande/${service.id}" class="btn btn-default demande"><span class="glyphicon glyphicon-plus text-success"></span>&nbsp;Je demande</a>
-						    </c:otherwise>
-						</c:choose>
-						<c:set var="contains" value="false" />
-						<c:forEach var="offreService" items="${userServicesOffre}">
-						  <c:if test="${offreService[0].id eq service.id}">
-						    <c:set var="contains" value="true" />
-						  </c:if>
-						</c:forEach>
-						<c:choose>
-						    <c:when test="${contains}">
-						        <a href="${pageContext.request.contextPath}/retirerAssociation/offre/${service.id}" class="btn btn-default"><span class="glyphicon glyphicon-remove text-danger"></span>&nbsp;Je ne fournis plus</a>
-						    </c:when>
-						    <c:otherwise>
-						        <a href="${pageContext.request.contextPath}/ajouterAssociation/offre/${service.id}" class="btn btn-default offre"><span class="glyphicon glyphicon-plus text-success"></span>&nbsp;Je fournis</a>
-						    </c:otherwise>
-						</c:choose>
-	                </p>
-	            </div>
-	        </div>
-	    </div>
-	</c:forEach>
+	<div id="servicesList">
+		<input class="search" placeholder="Search" />
+		  <button class="sort" data-sort="serviceTitle">
+		    Sort by name
+		  </button>
+		<div class="row text-center list">
+		<c:forEach var="service" items="${services}">
+		    <div class="col-md-6 col-sm-6 hero-feature">
+		        <div class="thumbnail">
+		            <div class="caption">
+		                <h3 class="serviceTitle">${service.titre}</h3>
+		                <p class="serviceDescription">${service.description}</p>
+		                <p>
+							<c:set var="contains" value="false" />
+							<c:forEach var="demandeService" items="${userServicesDemande}">
+							  <c:if test="${demandeService[0].id eq service.id}">
+							    <c:set var="contains" value="true" />
+							  </c:if>
+							</c:forEach>
+			                <c:choose>
+							    <c:when test="${contains}">
+							        <a href="${pageContext.request.contextPath}/retirerAssociation/demande/${service.id}" class="btn btn-default"><span class="glyphicon glyphicon-remove text-danger"></span>&nbsp;Je n'ai plus besoin</a>
+							    </c:when>
+							    <c:otherwise>
+							        <a href="${pageContext.request.contextPath}/ajouterAssociation/demande/${service.id}" class="btn btn-default demande"><span class="glyphicon glyphicon-plus text-success"></span>&nbsp;Je demande</a>
+							    </c:otherwise>
+							</c:choose>
+							<c:set var="contains" value="false" />
+							<c:forEach var="offreService" items="${userServicesOffre}">
+							  <c:if test="${offreService[0].id eq service.id}">
+							    <c:set var="contains" value="true" />
+							  </c:if>
+							</c:forEach>
+							<c:choose>
+							    <c:when test="${contains}">
+							        <a href="${pageContext.request.contextPath}/retirerAssociation/offre/${service.id}" class="btn btn-default"><span class="glyphicon glyphicon-remove text-danger"></span>&nbsp;Je ne fournis plus</a>
+							    </c:when>
+							    <c:otherwise>
+							        <a href="${pageContext.request.contextPath}/ajouterAssociation/offre/${service.id}" class="btn btn-default offre"><span class="glyphicon glyphicon-plus text-success"></span>&nbsp;Je fournis</a>
+							    </c:otherwise>
+							</c:choose>
+		                </p>
+		            </div>
+		        </div>
+		    </div>
+		</c:forEach>
+		
+		<!-- JS modal with datepicker -->
+		<!-- Small modal -->
+		
+		<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+		  <div class="modal-dialog modal-sm">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		        <h4 class="modal-title"></h4>
+		      </div>
+		      <div class="modal-body">
+		        <div style="overflow:hidden;">
+				    <div class="form-group">
+				        <div class="row">
+				            <div class="col-md-12">
+				                <div id="datetimepicker12">
+				                	<input type="hidden" class="form-control datevalue" />
+				                </div>
+				            </div>
+				        </div>
+				    </div>
+				</div>
+		      </div>
+		      <div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+		        <button type="button" class="btn btn-primary save-assoc">Enregistrer</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		
+		</div>
+	</div><!-- servicesList -->
 	
-	<!-- JS modal with datepicker -->
-	<!-- Small modal -->
-	
-	<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-	  <div class="modal-dialog modal-sm">
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title"></h4>
-	      </div>
-	      <div class="modal-body">
-	        <div style="overflow:hidden;">
-			    <div class="form-group">
-			        <div class="row">
-			            <div class="col-md-12">
-			                <div id="datetimepicker12">
-			                	<input type="hidden" class="form-control datevalue" />
-			                </div>
-			            </div>
-			        </div>
-			    </div>
-			</div>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	        <button type="button" class="btn btn-primary save-assoc">Enregistrer</button>
-	      </div>
-	    </div>
-	  </div>
-	</div>
+	<script src="http://listjs.com/no-cdn/list.js"></script>
+	<script type="text/javascript">
+		var options = {
+		  valueNames: [ 'serviceTitle', 'serviceDescription' ]
+		};
+		
+		var userList = new List('servicesList', options);
+	</script>
 	
 	<script>
 		$(function () {
@@ -120,6 +137,4 @@
 			window.location.replace(link);
 		});
 	</script>
-	
-	</div>
 <jsp:include page="fragments/footer.jsp" />
