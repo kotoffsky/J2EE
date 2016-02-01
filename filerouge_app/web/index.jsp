@@ -1,3 +1,4 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <jsp:include page="vues/fragments/header.jsp" />
 	<header class="jumbotron hero-spacer">
 		<p>${message}</p>
@@ -27,7 +28,6 @@
       $('.list-group-item-text').hide();
       $(this).addClass('active');
       $('.list-group-item-text',this).show();
-
     });
   </script>
 

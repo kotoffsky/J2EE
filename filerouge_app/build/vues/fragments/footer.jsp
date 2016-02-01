@@ -2,6 +2,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 </div><!-- /.col-md-8 -->
 
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div class="col-md-4">
        <div class="well">
        		<c:choose>
@@ -16,8 +17,8 @@
 				        <label>Mot de passe:</label>
 				        <input name="password" type="password" class="form-control">
 				      </div>
-				      <div><a href="signup.jsp">Insciption</a></div>
 				      <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-log-in"></span>&nbsp;Entrer</button>
+				      <a href="${pageContext.request.contextPath}/signup.jsp" type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-heart"></span>&nbsp;Inscription</a>
 				    </form>
 			    </c:when>
 			    <c:otherwise>
